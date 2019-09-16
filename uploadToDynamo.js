@@ -71,28 +71,3 @@ function uploadToDynamo(params) {
         }
     });
 }
-
-// var table = "Sobeys";
-
-// var date = "9/12/2019";
-// var item = "foil";
-// var price = 2.99
-
-// var params = {
-//     TableName:table,
-//     Item:{
-//         "Store":"testing",
-//         "Date": date,
-//         "Item": item,
-//         "Price": price
-//     }
-// };
-
-// console.log("Adding a new item...");
-// docClient.put(params, function(err, data) {
-//     if (err) {
-//         console.error("Unable to add item. Error JSON:", JSON.stringify(err, null, 2));
-//     } else {
-//         console.log("Added item:", JSON.stringify(data, null, 2));
-//     }
-// });
