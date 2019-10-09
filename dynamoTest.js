@@ -14,7 +14,7 @@ var docClient = new AWS.DynamoDB.DocumentClient();
 var table = "Sobeys";
 
 var date = "9/12/2019";
-var item = "foil";
+var item = "test123";
 var price = 2.99
 
 var params = {

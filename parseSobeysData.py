@@ -53,7 +53,7 @@ for item_selector in items_selector:
     print(itemName + ": " + itemPrice + "/" + units + " " + unitType)
 
     # Write to csv file
-    row = ["testing", "9/12/2019", itemName, itemPrice, unitType, units]
+    row = ["testing", "9/19/2019", itemName, itemPrice, unitType, units]
     rows.append(row)
 
 with open("SobeysItems.csv", mode="a") as f:
