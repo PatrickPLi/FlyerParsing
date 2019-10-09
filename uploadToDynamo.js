@@ -3,35 +3,44 @@ const fs = require('fs');
 
 var AWS = require("aws-sdk");
 
-fs.createReadStream('AccessKeys.csv')
-  .pipe(csv())
-  .on('data', (row) => {
-    rows.push(row);
-    configureAccess(row);
-
-    //console.log(rows.length);
-  })
-  .on('end', () => {
-    console.log('Credentials imported');
-  });
-
 
 var AWS_ACCESS_KEY_ID;
 var AWS_SECRET_ACCESS_KEY;
 
-function configureAccess(row) {
-    // console.log(row);
-    AWS_ACCESS_KEY_ID = row.AccessKeyID;
-    AWS_SECRET_ACCESS_KEY = row.SecretAccessKey;
+// fs.createReadStream('AccessKeys.csv')
+//   .pipe(csv())
+//   .on('data', (row) => {
+//     rows.push(row);
+//     configureAccess(row);
 
-    // console.log("Keys");
-    // console.log(AWS_ACCESS_KEY_ID);
-    // console.log(AWS_SECRET_ACCESS_KEY);
+//     //console.log(rows.length);
+//   })
+//   .on('end', () => {
+//     console.log('Credentials imported');
+//   });
 
-    AWS.config.accessKeyId = AWS_ACCESS_KEY_ID;
-    AWS.config.secretAccessKey = AWS_SECRET_ACCESS_KEY;
-}
+  console.log("Keys");
+  console.log(AWS_ACCESS_KEY_ID);
+  console.log(AWS_SECRET_ACCESS_KEY);
 
+AWS_ACCESS_KEY_ID = "xxxxxxxxx"
+AWS_SECRET_ACCESS_KEY = "xxxxxxxx"
+
+// function configureAccess(row) {
+//     // console.log(row);
+//     AWS_ACCESS_KEY_ID = row.AccessKeyID;
+//     AWS_SECRET_ACCESS_KEY = row.SecretAccessKey;
+
+//     // console.log("Keys");
+//     // console.log(AWS_ACCESS_KEY_ID);
+//     // console.log(AWS_SECRET_ACCESS_KEY);
+
+//     AWS.config.accessKeyId = AWS_ACCESS_KEY_ID;
+//     AWS.config.secretAccessKey = AWS_SECRET_ACCESS_KEY;
+// }
+
+AWS.config.accessKeyId = AWS_ACCESS_KEY_ID;
+AWS.config.secretAccessKey = AWS_SECRET_ACCESS_KEY;
 AWS.config.region = "us-east-2";
 
 AWS.config.update({endpoint: "https://dynamodb.us-east-2.amazonaws.com"});
@@ -49,7 +58,7 @@ fs.createReadStream('SobeysItems.csv')
   })
   .on('end', () => {
     console.log('CSV file successfully processed');
-    //processJSON(rows);
+    processJSON(rows);
   });
 
 function processJSON(rows) {
@@ -79,7 +88,7 @@ function createParams(json) {
         "UnitType": UnitType
         }
     };
-    // console.log(params);
+    console.log(params);
     // console.log(typeof params)
     uploadToDynamo(params);
 }
